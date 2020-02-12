@@ -13,7 +13,7 @@ Para nuestra versión del juego solo vamos a tomar las mecánicas del juego, per
 ## Modificaciones:
 Las modificaciones se dividen en dos partes:
 1. Objetivo del juego: El objetivo en SUPERHEX+ es ser el ultimo jugador vivo en el servidor. Se Inician con un máximo de 25 jugadores en la partida y se tiene un tamaño inicial del tablero, al pasar el tiempo el tamaño del tablero se va reduciendo mientras los jugadores van ganando terreno y van matando a otros jugadores. La partida termina cuando solo hay un jugador vivo.
-2. 	Minas: en el tablero se distribuyen aleatoriamente minas las cuales si el jugador pasa por encima de ese hexágono muere. Las minas son visibles a 3 hexágonos de distancia.
+2. 	Minas: en el tablero se distribuyen aleatoriamente minas las cuales afectarán al jugador solo si éste pasa sobre el hexágono. Las minas son visibles a 3 hexágonos de distancia.
 
 ## Mockups
 ### Pantalla incial 
@@ -32,3 +32,19 @@ En la pantalla de juego solo se tiene información de estado de la partida a la 
 ![pantalla final](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/4.png)
 
 Se muestra un resumen de la partida del jugador junto a un aviso de fin de partida y un boton de volver a jugar que lo lleva a la pantalla incial.
+
+## Casos de Uso
+
+### 1. Dominar Area. 
+- Como jugador quiero encerrar un área y dominarla para comenzar a acumular en la puntuación. 
+- Criterios: Solamente se podrá dominar el área si ningún jugador choca con los bordes de la misma antes de cerrarla por completo.
+### 2. Ver Score Board.
+- Como jugador quiero ver el Score Board para poder tener la información de los jugadores compitiendo en la partida.
+- Criterios: El Score Board se debe mostrar permanentemente, indicando el número de asesinatos hasta el momento y la cantidad de jugadores que aún siguen compitiendo en la partida.
+### 2. Eliminar Adversario.
+- Como jugador quiero poder eliminar a mi adversario para acercarme a la victoria.
+- Criterios: Para poder eliminar al adversario debo chocar con la linea de una zona que no haya terminado de delimitar; también es posible guiarlo hacia una mina o los limites de la zona.
+
+## Base de Datos
+
+![DB](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/DB.png)
