@@ -18,17 +18,43 @@ Las modificaciones se dividen en dos partes:
 ## Mockups
 ### Pantalla incial 
 
-![pantalla inicial](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/1.png)
+![pantalla inicial](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/inicial.PNG)
 
-Es una pantalla muy sencilla donde le usuario solo tiene que ingresar (si desea) su nombre de usuario para poder empezar a jugar.
+Es una pantalla muy sencilla donde el usuario tiene las opciones de crear una sala para jugar o unirse a una sala ya creada.
+
+### Crear sala
+
+![crearSala](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/crearSala.PNG)
+
+Aqui el usuario tiene un espacio de texto para poner el nombre de la sala y un boton para crearla.
+
+### Esperando crear partida
+
+![esperandoCrearSala](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/esperandoCrear.PNG)
+
+El usuario que creo la sala (el líder de la sala) ve en tiempo real los usuarios que van ingresando a la sala y tiene un boton para cancelar la sala. Al momento de cancelar la sala el líder vuelve a la pantalla de crear la sala.
+
+### Unirse a sala
+
+![unirseSala](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/crearSala.PNG)
+
+Aqui el usuario tiene un espacio de texto para poner el nombre de la sala y un boton para unirse.
+
+### Esperando unirse a partida
+
+![esperandoUnirSala](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/esperandoUnir.PNG)
+
+Cuando se une a una sala puede ver los jugadores que ya se unieron y tiene un boton para abandonar la sala. Si el usuario abandona la sala o el líder cancela la partida, el usuario se redirecciona a la pantalla de unirse a una sala.
 
 ### Pantalla de juego 
+
 ![pantalla juego 1](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/2.png)
 ![pantalla juego 2](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/3.png)
 
 En la pantalla de juego solo se tiene información de estado de la partida a la parte superiroir y el resto es el movimiento del jugador.
 
 ### Pantalla final
+
 ![pantalla final](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/4.png)
 
 Se muestra un resumen de la partida del jugador junto a un aviso de fin de partida y un boton de volver a jugar que lo lleva a la pantalla incial.
