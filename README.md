@@ -36,7 +36,7 @@ El usuario que creo la sala (el líder de la sala) ve en tiempo real los usuario
 
 ### Unirse a sala
 
-![unirseSala](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/crearSala.PNG)
+![unirseSala](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/unirseSala.PNG)
 
 Aqui el usuario tiene un espacio de texto para poner el nombre de la sala y un boton para unirse.
 
