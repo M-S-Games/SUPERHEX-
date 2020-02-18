@@ -85,3 +85,7 @@ Se muestra un resumen de la partida del jugador junto a un aviso de fin de parti
 ## Base de Datos
 
 ![DB](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/DB.png)
+
+## Diagrama de Clases
+
+![DB](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/Clases.png)
