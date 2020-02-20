@@ -21,13 +21,14 @@ El objetivo del juego es ser el último jugador con vida en el tablero.
   
 ### Conquistar territorio
 
-Un jugador conquista territorio cuando sale de su zona conquistada, rodea una zona que sea de otro jugador o territorio neutral y vuelve a su zona ya conquistada. Todos los hexágonos dentro de esta nueva zona cambian de color al color del jugador y se le suman los respectivos puntos.
+- Un jugador conquista territorio cuando sale de su zona conquistada, rodea una zona que sea de otro jugador o territorio neutral y vuelve a su zona ya conquistada. Todos los hexágonos dentro de esta nueva zona cambian de color al color del jugador y se le suman los respectivos puntos.
 Formas de morir
 
-Un Jugador puede morir en cualquiera de los siguientes escenarios:
-- Muere cuando otro jugador toca con la cabeza su cola.
-- Cuando él mismo toca con su cabeza la cola.
-- Cuando choca su cabeza con otro jugador en territorio conquistado por el otro jugador.
-- Cuando estrella su cabeza con un hexágono que demarca el límite del tablero de juego.
-- Dos jugadores mueren al tiempo cuando ambos jugadores estrellan su cabeza en un hexágono sin conquistar.
-Cuando un jugador mata a otro jugador suma 500 puntos.
+- Un Jugador puede morir en cualquiera de los siguientes escenarios:
+  - Muere cuando otro jugador toca con la cabeza su cola.
+  - Cuando él mismo toca con su cabeza la cola.
+  - Cuando choca su cabeza con otro jugador en territorio conquistado por el otro jugador.
+  - Cuando estrella su cabeza con un hexágono que demarca el límite del tablero de juego.
+  - Dos jugadores mueren al tiempo cuando ambos jugadores estrellan su cabeza en un hexágono sin conquistar.
+  
+- Cuando un jugador mata a otro jugador suma 500 puntos.
