@@ -15,7 +15,7 @@ Para nuestra versión del juego solo vamos a tomar las mecánicas del juego, per
 Las modificaciones se dividen en dos partes:
 1. Objetivo del juego: El objetivo en SUPERHEX+ es ser el ultimo jugador vivo en el servidor. Se Inician con un máximo de 25 jugadores en la partida y se tiene un tamaño inicial del tablero, al pasar el tiempo el tamaño del tablero se va reduciendo mientras los jugadores van ganando terreno y van matando a otros jugadores. La partida termina cuando solo hay un jugador vivo.
 2. 	Minas: en el tablero se distribuyen aleatoriamente minas las cuales afectarán al jugador solo si éste pasa sobre el hexágono. Las minas son visibles a 3 hexágonos de distancia.
-### [Definición](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Definicion.md)
+
 
 ## Mockups
 ### Pantalla incial 
