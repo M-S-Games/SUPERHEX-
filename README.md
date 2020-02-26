@@ -1,5 +1,7 @@
 # SuperHex+
 
+[![M-S-Games](https://circleci.com/gh/M-S-Games/SUPERHEXPlus.svg?style=svg)](https://app.circleci.com/github/M-S-Games/SUPERHEXPlus/pipelines)
+
 ## Integrantes 
 - Miguel Ángel Castellanos Salamanca 
 - Juan Sebastian Gómez López 
