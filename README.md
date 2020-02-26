@@ -1,4 +1,4 @@
-# SUPERHEX+
+# SuperHex+
 
 ## Integrantes 
 - Miguel Ángel Castellanos Salamanca 
