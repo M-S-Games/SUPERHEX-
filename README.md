@@ -67,22 +67,22 @@ Se muestra un resumen de la partida del jugador junto a un aviso de fin de parti
 
 ![CU](https://github.com/M-S-Games/SUPERHEXPlus/blob/master/Images/CasosUso.png)
 
-### 1. Crear Sala.
+### 1. Crear Sala
 -  Como jugador quiero crear una sala para jugar con amigos o crear mi propia partida.
 -  Criterios: Para poder crear una sala debo ingresar mi nombre de usuario y asignarle un nombre a la sala; además debo tener la opción de cancelarla en cualquier momento.
-### 2. Unirme a Sala.
+### 2. Unirme a Sala
 -  Como jugador quiero ver las salas disponibles y unirme a una para jugar con amigos o ingresar a una partida.
 -  Criterios: Debo poder ver todas las salas que están disponibles en el momento y poder seleccionar una.
-### 3. Dominar Area. 
+### 3. Dominar Area
 -  Como jugador quiero encerrar un área y dominarla para comenzar a acumular en la puntuación. 
 -  Criterios: Solamente se podrá dominar el área si ningún jugador choca con los bordes de la misma antes de cerrarla por completo.
-### 4. Eliminar Adversario.
+### 4. Eliminar Adversario
 -  Como jugador quiero poder eliminar a mi adversario para acercarme a la victoria.
 -  Criterios: Para poder eliminar al adversario debo chocar con la linea de una zona que no haya terminado de delimitar también es posible guiarlo hacia una mina o los limites de la zona.
-### 5. Ver Score Board.
+### 5. Ver Score Board
 -  Como jugador quiero ver el Score Board para poder tener la información de los jugadores compitiendo en la partida.
 -  Criterios: El Score Board se debe mostrar permanentemente, indicando el número de asesinatos hasta el momento y la cantidad de jugadores que aún siguen compitiendo en la partida.
-### 6. Ver Historial.
+### 6. Ver Historial
 -  Como usuario quiero ver el historial de partidas jugadas en la plataforma para analizar el uso de la misma.
 -  Criterios: Se debe generar un reporte con el historico de las partidas jugadas en la plataforma.
 
