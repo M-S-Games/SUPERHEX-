@@ -3,7 +3,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/35265f294e494069b52aee3218a51106)](https://www.codacy.com/gh/M-S-Games/SUPERHEXPlus?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=M-S-Games/SUPERHEXPlus&amp;utm_campaign=Badge_Grade)
 
 ## Integrantes 
-- Miguel Ángel Castellanos Salamanca 
+- Miguel Ángel Castellanos Salamanca
 - Juan Sebastian Gómez López 
 ## Resumen:
 Para este proyecto se tomó la decisión de reinventar un juego que ya existe con un sistema de competencia mucho más dinámico y emocionante. Mas adelante se explicará el juego y las modificaciones que se van a implementar para el mismo.
