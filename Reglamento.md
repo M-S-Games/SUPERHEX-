@@ -5,7 +5,7 @@
 
 El objetivo del juego es ser el último jugador con vida en el tablero.
 
-### Partes:
+### Partes
 
 - **Tablero**: Es la zona de juego, tiene forma de hexágono y cada lado tiene 100 hexágonos al inicio de la partida. Cada minuto pierde 2 hexágonos de lado hasta un tamaño mínimo 5 hexágonos por lado. 
 
