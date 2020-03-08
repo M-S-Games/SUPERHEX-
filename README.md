@@ -1,5 +1,7 @@
 # SUPERHEX+
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/896a211651ad450681dfc94013c2dbca)](https://app.codacy.com/gh/M-S-Games/SUPERHEXPlus?utm_source=github.com&utm_medium=referral&utm_content=M-S-Games/SUPERHEXPlus&utm_campaign=Badge_Grade_Dashboard)
+
 ## Integrantes 
 - Miguel Ángel Castellanos Salamanca 
 - Juan Sebastian Gómez López 
