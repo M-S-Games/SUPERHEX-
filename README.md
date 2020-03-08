@@ -1,6 +1,7 @@
 # SUPERHEX+
 
 [![M-S-Games](https://circleci.com/gh/M-S-Games/SUPERHEXPlus.svg?style=svg)](https://github.com/M-S-Games/SUPERHEXPlus)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/35265f294e494069b52aee3218a51106)](https://www.codacy.com/gh/M-S-Games/SUPERHEXPlus?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=M-S-Games/SUPERHEXPlus&amp;utm_campaign=Badge_Grade)
 
 
 ## Integrantes 
