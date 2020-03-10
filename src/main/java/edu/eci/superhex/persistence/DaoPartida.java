@@ -6,6 +6,7 @@ import edu.eci.superhex.model.Partida;
 import java.sql.Timestamp;
 import java.util.List;
 
+
 public interface DaoPartida {
 
     /**

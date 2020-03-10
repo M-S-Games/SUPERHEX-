@@ -4,7 +4,7 @@ import edu.eci.superhex.persistence.SuperHexPersistenceException;
 import edu.eci.superhex.model.Jugador;
 import edu.eci.superhex.model.Partida;
 import edu.eci.superhex.persistence.DaoPartida;
-import edu.eci.superhex.persistence.mybatisimpl.mappers.PartidaMapper;
+import edu.eci.superhex.persistence.mappers.PartidaMapper;
 
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service("Partida")
 public class MyBatisPartida implements DaoPartida {
-    @Resource
+	@Resource
     PartidaMapper pm;
 
     @Override

@@ -1,4 +1,4 @@
-package edu.eci.superhex.persistence.mybatisimpl.mappers;
+package edu.eci.superhex.persistence.mappers;
 
 import edu.eci.superhex.model.Partida;
 
