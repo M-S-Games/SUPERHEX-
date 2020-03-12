@@ -1,11 +1,24 @@
 package edu.eci.superhex.model;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+
+@Entity
+@Table(name = "partida")
 public class Partida {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+    @Column
     private int etapa;
+    @Column(name = "fechainicio")
     private Timestamp fechaInicio = null;
+    @Column(name = "fechafin")
     private Timestamp fechaFin = null;
+    @OneToOne
+    @JoinColumn(name="ganador")
     private Jugador ganador;
 
     public Partida(int etapa,Timestamp fechaInicio,Timestamp fechaFin,Jugador ganador){
