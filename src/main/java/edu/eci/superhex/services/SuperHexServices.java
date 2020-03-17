@@ -2,9 +2,9 @@ package edu.eci.superhex.services;
 
 import edu.eci.superhex.persistence.SuperHexPersistenceException;
 import edu.eci.superhex.model.Partida;
-import edu.eci.superhex.persistence.DaoPartida;
+import edu.eci.superhex.repo.JugadorRepo;
+import edu.eci.superhex.repo.PartidaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +12,10 @@ import java.util.List;
 @Service("SuperHexServices")
 public class SuperHexServices {
     @Autowired
-    @Qualifier("Partida")
-    DaoPartida dp;
+    PartidaRepo partidaRepo;
+
+    @Autowired
+    JugadorRepo jugadorRepo;
 
     /**
      * Añade una partida
@@ -21,7 +23,7 @@ public class SuperHexServices {
      * @throws SuperHexPersistenceException
      */
     public void addPartida(Partida partida) throws SuperHexPersistenceException {
-        dp.addPartida(partida);
+        partidaRepo.save(partida);
     }
 
     /**
@@ -30,6 +32,6 @@ public class SuperHexServices {
      * @throws SuperHexPersistenceException
      */
     public List<Partida> getAllPartidas() throws SuperHexPersistenceException {
-        return dp.consultarPartidas();
+        return partidaRepo.findAll();
     }
 }

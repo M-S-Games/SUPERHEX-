@@ -36,10 +36,10 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>9.4-1200-jdbc4</version>
 		</dependency>
 
-    </dependencies>
+
+	</dependencies>
 
     <!-- Package as an executable jar -->
     <build>
