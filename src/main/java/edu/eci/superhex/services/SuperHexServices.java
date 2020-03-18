@@ -24,6 +24,7 @@ public class SuperHexServices {
      */
     public void addPartida(Partida partida) throws SuperHexPersistenceException {
         partidaRepo.save(partida);
+        partidaRepo.flush();
     }
 
     /**

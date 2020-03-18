@@ -17,7 +17,7 @@ public class Partida {
     private Timestamp fechaInicio = null;
     @Column(name = "fechafin")
     private Timestamp fechaFin = null;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="ganador")
     private Jugador ganador;
 
