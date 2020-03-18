@@ -31,12 +31,6 @@ public class Partida {
         this.fechaFin = fechaFin;
         this.ganador = ganador;
     }
-    public Partida(int etapa,Timestamp fechaInicio,Timestamp fechaFin,String ganador){
-        this.etapa = etapa;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.ganador = new Jugador(ganador);
-    }
 
     public int getEtapa() {
         return etapa;
