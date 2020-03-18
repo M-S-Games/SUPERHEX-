@@ -24,12 +24,23 @@ public class SuperHexAPIController {
     SuperHexServices shs;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<?> GetAllBlueprintFilter() {
+    public ResponseEntity<?> GetAllPartidas() {
         try {
             return new ResponseEntity<>(shs.getAllPartidas(), HttpStatus.ACCEPTED);
         } catch (SuperHexPersistenceException e) {
             Logger.getLogger(SuperHexAPIController.class.getName()).log(Level.SEVERE, null, e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> AddNuevaPartida(@RequestBody Partida newPart) throws SuperHexPersistenceException {
+        try {
+            shs.addPartida(newPart);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (SuperHexPersistenceException ex) {
+            Logger.getLogger(SuperHexAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);
         }
     }
 }

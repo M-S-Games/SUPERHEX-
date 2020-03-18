@@ -21,6 +21,10 @@ public class Partida {
     @JoinColumn(name="ganador")
     private Jugador ganador;
 
+    public Partida(){
+
+    }
+
     public Partida(int etapa,Timestamp fechaInicio,Timestamp fechaFin,Jugador ganador){
         this.etapa = etapa;
         this.fechaInicio = fechaInicio;
