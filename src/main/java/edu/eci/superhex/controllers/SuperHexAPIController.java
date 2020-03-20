@@ -3,6 +3,7 @@ package edu.eci.superhex.controllers;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import edu.eci.superhex.model.Partida;
+import edu.eci.superhex.persistence.SuperHexCache;
 import edu.eci.superhex.persistence.SuperHexPersistenceException;
 import edu.eci.superhex.services.SuperHexServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +17,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/partidas")
+@RequestMapping(value = "/superhex")
 public class SuperHexAPIController {
 
     @Autowired
     @Qualifier("SuperHexServices")
     SuperHexServices shs;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @Autowired
+    SuperHexCache cache;
+
+    @RequestMapping(path = "/partidas",method = RequestMethod.GET)
     public ResponseEntity<?> GetAllPartidas() {
         try {
             return new ResponseEntity<>(shs.getAllPartidas(), HttpStatus.ACCEPTED);
@@ -33,7 +37,7 @@ public class SuperHexAPIController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(path = "/partidas",method = RequestMethod.POST)
     public ResponseEntity<?> AddNuevaPartida(@RequestBody Partida newPart) throws SuperHexPersistenceException {
         try {
             shs.addPartida(newPart);
@@ -42,5 +46,11 @@ public class SuperHexAPIController {
             Logger.getLogger(SuperHexAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);
         }
+    }
+
+
+    @RequestMapping(path = "/salas",method = RequestMethod.GET)
+    public ResponseEntity<?> GetAllSalas() {
+        return new ResponseEntity<>(cache.getSalas(), HttpStatus.ACCEPTED);
     }
 }
