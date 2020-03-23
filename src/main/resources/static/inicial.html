@@ -12,20 +12,46 @@
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 
-
 </head>
 
 
 
-<body>
-<div class="container">
-    <h2>Welcome</h2>
-    <p>
-        <input id="username" type="text" placeholder="Username" required="true">
-        <button type="button" onclick="app.connect()">Create Room</button>
-        <button type="button" onclick="app.connect()">Join Room</button>
-    </p>
+<body onload="app.connect()">
+<div class="container" w>
+    <h1 class="text-center">Welcome</h1>
+    <div class="row justify-content-center align-items-center">
+        <div class="column px-md-5" style="margin: 10px"><input id="text" type="text" placeholder="Username" ></div>
+        <div class="column px-md-5">
+            <div class="row justify-content-center" style="margin: 10px">
+                <button type="button" id="botonArriba" class="btn-primary" onclick="app.connectCreate()">Create Room</button>
+            </div>
+            <div class="row justify-content-center" style="margin: 10px">
+                <button type="button" id="botonAbajo" class="btn-primary" onclick="app.connectJoin()">Join Room</button>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center" id="tablaSalas" style="display:block">
+        <table class="table table-striped">
+            <thread class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre Sala</th>
+                    <th scope="col">Cantidad Jugadores</th>
+                </tr>
+            </thread>
+            <tbody id ="salas"></tbody>
+        </table>
+    </div>
 
+    <div class="row justify-content-center" id="tablaJugadores" style="display:none">
+        <table class="table table-striped">
+            <thread class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre Jugador</th>
+                </tr>
+            </thread>
+            <tbody id ="jugadores"></tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>

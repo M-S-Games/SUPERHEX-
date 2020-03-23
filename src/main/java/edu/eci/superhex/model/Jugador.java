@@ -1,26 +1,28 @@
 package edu.eci.superhex.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class Jugador {
     @Id
-    private String nombre;
+    @Column(name = "nombre")
+    private String name;
 
     public Jugador(){
 
     }
 
-    public Jugador(String nombre){
-        this.nombre = nombre;
+    public Jugador(String name){
+        this.name = name;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 }

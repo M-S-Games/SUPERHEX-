@@ -4,6 +4,9 @@ public class Sala {
     private String name;
     private int players;
 
+    public Sala() {
+    }
+
     public Sala(String name, int players) {
         this.name = name;
         this.players = players;
