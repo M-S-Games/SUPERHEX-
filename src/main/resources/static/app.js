@@ -19,6 +19,7 @@ var app = (function () {
         boton1 = document.getElementById("botonArriba");
         boton2 = document.getElementById("botonAbajo");
         input.placeholder = "Username";
+        input.value = ""
         boton1.innerText = "Create Room"
         boton1.setAttribute("onclick","app.connectCreate()");
         boton2.innerText = "Join Room"
@@ -30,6 +31,7 @@ var app = (function () {
         boton1 = document.getElementById("botonArriba");
         boton2 = document.getElementById("botonAbajo");
         input.placeholder = "Nombre Sala";
+        input.value = ""
         boton1.innerText = "Create"
         boton1.setAttribute("onclick","app.crearSala(text.value)");
         boton2.innerText = "Back"
@@ -41,6 +43,7 @@ var app = (function () {
         boton1 = document.getElementById("botonArriba");
         boton2 = document.getElementById("botonAbajo");
         input.placeholder = "Nombre Sala";
+        input.value = ""
         boton1.innerText = "Join"
         boton1.setAttribute("onclick","app.unirseSala(text.value)");
         boton2.innerText = "Back"
@@ -82,11 +85,12 @@ var app = (function () {
             var tabla = document.getElementById("tablaJugadores");
             tabla.style.display = "block";
         }
-        alert(data);
+        alert("Creado");
         $("#jugadores").empty();
         for (var i = 0; i < data.length; i++) {
             var markup = "<tr> <td>"+ data[i].name;
             $("#jugadores").append(markup)
+            
         }
     }
 
