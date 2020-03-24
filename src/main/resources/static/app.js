@@ -90,7 +90,7 @@ var app = (function () {
         for (var i = 0; i < data.length; i++) {
             var markup = "<tr> <td>"+ data[i].name;
             $("#jugadores").append(markup)
-            
+
         }
     }
 
