@@ -85,7 +85,7 @@ var app = (function () {
             var tabla = document.getElementById("tablaJugadores");
             tabla.style.display = "block";
         }
-        alert("Creado");
+        //alertar
         $("#jugadores").empty();
         for (var i = 0; i < data.length; i++) {
             var markup = "<tr> <td>"+ data[i].name;
