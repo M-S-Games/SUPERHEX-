@@ -72,7 +72,7 @@ var app = (function () {
         for (var i = 0; i < data.length; i++) {
             if(data[i].name == username){
                 fail = true
-                toastr["error"]("Ya existe un usuario con este mombre","Oops! cambia de nombre");
+                toastr["error"]("Ya existe un usuario con este nombre","Oops! cambia de nombre");
             }
         }
         if (!fail){

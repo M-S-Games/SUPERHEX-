@@ -3,6 +3,7 @@ var boton1 = document.getElementById("botonArriba");
 var boton2 = document.getElementById("botonAbajo");
 var load = document.getElementById("load-dots");
 var texto = document.getElementById("info");
+var texto2 = document.getElementById("info1");
 var clock =  document.getElementById("clock");
 
 function mostrarInicial() {
@@ -12,6 +13,8 @@ function mostrarInicial() {
     input.value = ""
     input.style.display = "block"
     texto.innerText = "Crea o unete a una sala."
+    texto2.style.display = "block"
+    texto2.innerText = "Pon tu nombre y dale click en una sala para unirte."
     boton1.style.display = "block"
     boton1.innerText = "Create Room"
     boton1.setAttribute("onclick","app.connectCreate()");
@@ -32,6 +35,7 @@ function mostrarUnido() {
     input.style.display = "none"
     boton1.style.display = "none"
     texto.innerText = "Esperando nuevos jugadores..."
+    texto2.style.display = "none"
     boton2.style.display = "block"
     boton2.innerText = "exit"
     boton2.setAttribute("onclick","app.salirSala()");
