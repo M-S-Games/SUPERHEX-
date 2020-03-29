@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class SuperHexCache {
     private ConcurrentHashMap<String, Sala> salas = new ConcurrentHashMap<>();
     private ConcurrentHashMap<String, CopyOnWriteArrayList<Jugador>> jugadores = new ConcurrentHashMap<>();
+    private AtomicInteger numJugadores = new AtomicInteger(0);
 
     public boolean existeSala(String name){
         return salas.containsKey(name);
@@ -27,11 +29,20 @@ public class SuperHexCache {
     }
 
     public Sala getSala(String name) {
+        System.out.println(salas.get(name).getDate());
         return salas.get(name);
     }
 
     public void addPlayer(String name, Jugador player) {
         jugadores.get(name).add(player);
+    }
+
+    public void removePlayer(String name,Jugador player){
+        for(Jugador j : jugadores.get(name)){
+            if (j.getName().equals(player.getName())){
+                jugadores.get(name).remove(j);
+            }
+        }
     }
 
     public List<Sala> getSalas() {

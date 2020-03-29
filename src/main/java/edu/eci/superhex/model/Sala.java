@@ -3,6 +3,7 @@ package edu.eci.superhex.model;
 public class Sala {
     private String name;
     private int players;
+    private String date;
 
     public Sala() {
     }
@@ -10,6 +11,14 @@ public class Sala {
     public Sala(String name, int players) {
         this.name = name;
         this.players = players;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getName() {

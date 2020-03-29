@@ -1,88 +1,86 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <title>Inicial</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="/app.js"></script>
-    <script src="/webjars/jquery/jquery.min.js"></script>
-    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+	<title>SuperHex Plus</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="/hexagono.ico" />
 
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/util.css">
+	<link rel="stylesheet" href="/css/styles.css"/>
+	<link rel="stylesheet" href="/css/toastr.min.css" />
+	<link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
 </head>
+<body onload="app.connect()">
 
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title">
+						SuperHex Plus
+					</span>
 
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" id="text" value="" name="text" placeholder="Username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
 
-<body onload="app.connect()" style="background-image: url('images/background.jpg'); width: 100%; height: auto;" >
-<div class="container" w>
-    <form class="login100-form validate-form">
-        <span class="login100-form-logo">
-            <i class="zmdi zmdi-gamepad"></i>
-        </span>
-        <span class="login100-form-title p-b-34 p-t-27">
-            Super Hex +
-        </span>
-        <div class="row justify-content-center align-items-center" data-validate = "Enter username">
-            <div class="wrap-input100 validate-input" >
-                <input class="input100" id="text" type="text" placeholder="Username" >
-                <span class="focus-input100" data-placeholder="&#xf207;"></span>
-            </div>
-            <div class="column px-md-5">
-                <div class="container-login100-form-btn">
-                    <button type="button" id="botonArriba" class="login100-form-btn" onclick="app.connectCreate()">Create Room</button>
+					<div class="container-login100-form-btn">
+						<button type="button" class="login100-form-btn" id="botonArriba"  onclick="app.connectCreate()">Create room</button>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button type="button" class="login100-form-btn" id="botonAbajo"  style="display:none">Create room</button>
+					</div>
+				</form>
+                <div class="login100-pic">
+					<span class="login100-form-info" id="info">
+						Crea o unete a una sala.
+					</span>
+					<div id="clock"></div>
+					<div class="load-dots" id="load-dots" style="display: none">
+						<div class="bounce1"></div>
+						<div class="bounce2"></div>
+						<div class="bounce3"></div>
+					</div>
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar" id="tablaSalas" style="display:block">
+                        <table  class="table table-bordered table-hover mb-0">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Nombre Sala</th>
+                                <th scope="col">Cantidad Jugadores</th>
+                            </tr>
+                            </thead>
+                            <tbody id ="salas"></tbody>
+                        </table>
+                    </div>
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar" id="tablaJugadores" style="display:none">
+                        <table class="table table-bordered table-striped mb-0" >
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Nombre Jugador</th>
+                            </tr>
+                            </thead>
+                            <tbody id ="jugadores"></tbody>
+                        </table>
+                    </div>
                 </div>
-
-                <div class="container-login100-form-btn">
-                    <button type="button" id="botonAbajo" class="login100-form-btn" onclick="app.connectJoin()">Join Room</button>
-                </div>
-            </div>
-        </div>
-    </form>
-    <div class="row justify-content-center" id="tablaSalas" style="display:block">
-        <table class="table table-striped" style="font-family:Georgia, Garamond, Serif;color:white;font-style:italic;">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Nombre Sala</th>
-                    <th scope="col">Cantidad Jugadores</th>
-                </tr>
-            </thead>
-            <tbody id ="salas" style="font-family:Georgia, Garamond, Serif;color:white;font-style:italic;"></tbody>
-        </table>
-    </div>
-
-    <div class="row justify-content-center" id="tablaJugadores" style="display:none">
-        <table class="table table-striped" style="font-family:Georgia, Garamond, Serif;color:white;font-style:italic;">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Nombre Jugador</th>
-                </tr>
-            </thead>
-            <tbody id ="jugadores" style="font-family:Georgia, Garamond, Serif;color:white;font-style:italic;"></tbody>
-        </table>
-    </div>
-</div>
+			</div>
+		</div>
+	</div>
+	<script src="/js/app.js"></script>
+	<script src="/js/cambioVistas.js"></script>
+	<script src="/js/api.js"></script>
+	<script src="/js/clock.js"></script>
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<script src="/js/toastr.min.js"></script>
+	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+	<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+	<script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 </body>
 </html>

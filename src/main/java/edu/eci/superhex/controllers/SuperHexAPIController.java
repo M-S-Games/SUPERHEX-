@@ -48,9 +48,19 @@ public class SuperHexAPIController {
         }
     }
 
-
     @RequestMapping(path = "/salas",method = RequestMethod.GET)
     public ResponseEntity<?> GetAllSalas() {
         return new ResponseEntity<>(cache.getSalas(), HttpStatus.ACCEPTED);
+    }
+
+    @RequestMapping(path = "/salas/{name}",method = RequestMethod.GET)
+    public ResponseEntity<?> GetSala(@PathVariable ("name") String roomName) {
+        return new ResponseEntity<>(cache.getSala(roomName), HttpStatus.ACCEPTED);
+    }
+
+
+    @RequestMapping(path = "/jugadores/{name}",method = RequestMethod.GET)
+    public ResponseEntity<?> GetAllJugadores(@PathVariable ("name") String roomName) {
+        return new ResponseEntity<>(cache.getJugadorBySala(roomName), HttpStatus.ACCEPTED);
     }
 }
