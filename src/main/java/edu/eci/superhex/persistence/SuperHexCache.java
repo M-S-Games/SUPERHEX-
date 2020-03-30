@@ -29,7 +29,6 @@ public class SuperHexCache {
     }
 
     public Sala getSala(String name) {
-        System.out.println(salas.get(name).getDate());
         return salas.get(name);
     }
 
