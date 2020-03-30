@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Super Hex +</title>
+        <style>
+            * { padding: 0; margin: 0; }
+            canvas { background: #eee; display: block; margin: 0 auto; }
+        </style>
+    </head>
+    <body>
+
+        <canvas id="myCanvas" width="1400" height="750"></canvas>
+
+        <script>
+            document.addEventListener("mousemove", mouseMoveHandler, false);
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            var x = canvas.width/2;
+            var y = canvas.height-30;
+            var dx = 2;
+            var dy = -2;
+            var ballRadius = 10;
+            var score = 0;
+
+            function mouseMoveHandler(e) {
+                var relativeX = e.clientX - canvas.offsetLeft;
+                var relativeY = e.clientY - canvas.offsetTop;
+                if(relativeX > x+ballRadius){
+                    if(relativeY > y+ballRadius){
+                        dy = 2
+                    }else if (relativeY < y-ballRadius){
+                        dy = -2
+                    }
+                    dx = 2;
+                }else if (relativeX < x-ballRadius){
+                    if(relativeY > y+ballRadius){
+                        dy = 2
+                    }else if (relativeY < y-ballRadius){
+                        dy = -2
+                    }
+                    dx = -2;
+                }
+            }
+
+            function drawScore() {
+                ctx.font = "16px Arial";
+                ctx.fillStyle = "#dd7a1a";
+                ctx.fillText("Score: "+score, 8, 20);
+            }
+
+            function drawBall() {
+                ctx.beginPath();
+                ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+                ctx.fillStyle = "#5add38";
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            function draw() {
+
+                drawBall();
+                drawScore();
+                if(x + dx > canvas.width-ballRadius || x + dx < ballRadius||y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+                    alert("GAME OVER");
+                    clearInterval(interval);
+                }
+                x += dx;
+                y += dy;
+            }
+            var interval = setInterval(draw, 10);
+        </script>
+
+    </body>
+</html>
