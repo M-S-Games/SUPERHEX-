@@ -11,6 +11,7 @@ var app = (function () {
             this.name = name;
         }
     }
+
     var username;
     var joinedRoom;
     var stompClient = null;
@@ -20,19 +21,17 @@ var app = (function () {
         now.setMinutes(now.getMinutes()+5);
         countdown(now.toString(),"clock","¡Ya empezo!");
         var sala = new Sala(name,now.toString());
+        joinedRoom = name;
         stompClient.subscribe('/topic/created.'+name, function (message){
             var user = new Jugador(username);
-            joinedRoom = name;
             var div = document.getElementById("load-dots");
             div.style.display = "block";
-            stompClient.subscribe('/topic/joined.'+joinedRoom, function (eventbody) {
-                var salas = JSON.parse(eventbody.body);
-                stompClient.unsubscribe("misala"+name);
-                mostrarUnido();
-                _tableJugadores(salas);
-            },{id:"joined."+name});
+            subJoin(name);
+            subSalir(name);
+            subStart(name);
             stompClient.unsubscribe("salaGeneral");
             stompClient.send("/app/joinroom."+joinedRoom,{},JSON.stringify(user));
+            toastr["success"]("Te has ha unido","¡Bienvenido!");
             },{id:"misala"+name});
         stompClient.send("/app/newroom."+name,{},JSON.stringify(sala));
     }
@@ -43,28 +42,25 @@ var app = (function () {
         div.style.display = "block";
         joinedRoom = name;
         getSalas(function (data) {
-            console.log(data[0].date);
             countdown(data[0].date,"clock","¡Ya empezo!");
         },name);
         stompClient.unsubscribe("salaGeneral");
-        stompClient.subscribe('/topic/joined.'+joinedRoom, function (eventbody) {
-            var salas = JSON.parse(eventbody.body);
-            mostrarUnido();
-            toastr["success"]("Te has ha unido","¡Bienvenido!");
-            _tableJugadores(salas);
-        },{id:"joined."+name});
+        subJoin(name);
+        subSalir(name);
+        subStart(name);
         stompClient.send("/app/joinroom."+joinedRoom,{},JSON.stringify(user));
+        toastr["success"]("Te has ha unido","¡Bienvenido!");
     }
 
     function salirSala(){
         var user = new Jugador(username);
         stompClient.unsubscribe("joined."+joinedRoom);
+        stompClient.unsubscribe("exit."+joinedRoom);
+        stompClient.unsubscribe("started."+joinedRoom);
         stompClient.send("/app/exitroom."+joinedRoom,{},JSON.stringify(user));
-        stompClient.subscribe('/topic/created', function (message) {
-            var salas = JSON.parse(message.body);
-            _tableSalas(salas);
-        },{id:"salaGeneral"});
+        subCreate();
         mostrarInicial();
+        getSala(joinedRoom,validarSola);
     }
 
     function validarNombre(data,name){
@@ -93,6 +89,12 @@ var app = (function () {
         }
     }
 
+    function validarSola(data,name) {
+        if (data.players == 0){
+            stompClient.send("/app/deleteroom."+joinedRoom,{},null);
+        }
+    }
+
     function join(el){
         var nombre = document.getElementById("text").value;
         if( nombre === null||nombre === ""){
@@ -104,16 +106,54 @@ var app = (function () {
         }
     }
 
+    function empezarSala(){
+        var now = new Date();
+        var sala = new Sala(joinedRoom,now.toString())
+        stompClient.send("/app/start."+joinedRoom,{},JSON.stringify(sala    ));
+    }
+
+    function subSalir(name){
+        stompClient.subscribe('/topic/exit.'+name, function (eventbody) {
+            var salas = JSON.parse(eventbody.body);
+            stompClient.unsubscribe("misala"+name);
+            mostrarUnido();
+            _tableJugadores(salas);
+            toastr["warning"]("Alguien ha salido de la sala.","¡Ohh ohh se fué!");
+        },{id:"exit."+name});
+    }
+    function subJoin(name){
+        stompClient.subscribe('/topic/joined.'+name, function (eventbody) {
+            var salas = JSON.parse(eventbody.body);
+            stompClient.unsubscribe("misala"+name);
+            mostrarUnido();
+            _tableJugadores(salas);
+            toastr["success"]("Alguien más se ha unido a la sala.","¡Nuevo usuario!");
+        },{id:"joined."+name});
+    }
+    function subCreate() {
+        stompClient.subscribe('/topic/created', function (message) {
+            var salas = JSON.parse(message.body);
+            _tableSalas(salas);
+        },{id:"salaGeneral"});
+    }
+    function subStart(name) {
+        stompClient.subscribe('/topic/started.'+name, function (message) {
+            finalizarClock();
+        },{id:"started."+name});
+    }
+
+    function acabarPartida(){
+        swal("La partida ha terminado", "#"+1+"\nKills: "+0);
+        //mostrarInicial();
+    }
+
     var connectAndSubscribeSala = function () {
         console.info('Connecting to WS...');
         var socket = new SockJS('/stompendpoint');
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
-            stompClient.subscribe('/topic/created', function (message) {
-                var salas = JSON.parse(message.body);
-                _tableSalas(salas);
-            },{id:"salaGeneral"});
+            subCreate();
         });
     };
 
@@ -143,6 +183,8 @@ var app = (function () {
             }
         },
         unirseSala:unirseSala,
-        salirSala:salirSala
+        salirSala:salirSala,
+        empezarSala:empezarSala,
+        acabarPartida:acabarPartida
     }
 })();

@@ -31,6 +31,18 @@ public class NewRoomController {
         msgt.convertAndSend("/topic/created."+name,cache.getSalas());
         msgt.convertAndSend("/topic/created",cache.getSalas());
     }
+
+    @MessageMapping("/deleteroom.{name}")
+    public void handleDeleteRoom(@DestinationVariable String name) throws Exception {
+        System.out.println("Eliminar sala en el servidor!: "+name);
+        if(cache.existeSala(name)){
+            cache.deleteSala(name);
+        }else{
+            throw new SuperHexPersistenceException(SuperHexPersistenceException.SALA_NO_EXISTE);
+        }
+        msgt.convertAndSend("/topic/created",cache.getSalas());
+    }
+
     @MessageMapping("/joinroom.{name}")
     public void handleJoinRoom(Jugador player,@DestinationVariable String name) throws Exception {
         System.out.println("Nuevo jugador recibido en el servidor!: "+player.getName()+" para la sala "+name);
@@ -56,6 +68,18 @@ public class NewRoomController {
             throw new SuperHexPersistenceException(SuperHexPersistenceException.SALA_NO_EXISTE);
         }
         msgt.convertAndSend("/topic/created",cache.getSalas());
-        msgt.convertAndSend("/topic/joined."+name,cache.getJugadorBySala(name) );
+        msgt.convertAndSend("/topic/exit."+name,cache.getJugadorBySala(name) );
+    }
+
+    @MessageMapping("/start.{name}")
+    public void handleStartRoom(Sala room,@DestinationVariable String name) throws Exception {
+        System.out.println("Empezando sala: "+name);
+        if(cache.existeSala(name)){
+            Sala s = cache.getSala(name);
+            s.setDate(room.getDate());
+        }else{
+            throw new SuperHexPersistenceException(SuperHexPersistenceException.SALA_NO_EXISTE);
+        }
+        msgt.convertAndSend("/topic/started."+name,cache.getSala(name));
     }
 }

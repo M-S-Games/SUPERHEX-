@@ -15,8 +15,9 @@ const getRemainingTime = deadline => {
     }
 };
 var timerUpdate;
+var el;
 const countdown = (deadline,elem,finalMessage) => {
-    const el = document.getElementById(elem);
+    el = document.getElementById(elem);
     el.style.display = "block";
 
     timerUpdate = setInterval( () => {
@@ -24,13 +25,18 @@ const countdown = (deadline,elem,finalMessage) => {
         el.innerHTML = `La partida empieza en: ${t.remainMinutes}:${t.remainSeconds}`;
 
         if(t.remainTime <= 1) {
-            clearInterval(timerUpdate);
-            el.innerHTML = finalMessage;
+            finalizarClock(finalMessage);
         }
 
     }, 1000)
 };
 function cancelarClock() {
     clearInterval(timerUpdate);
+    el.innerHTML = "¡Ya Empezo!"
 }
 
+function finalizarClock(finalMessage) {
+    clearInterval(timerUpdate);
+    el.innerHTML = "¡Ya Empezo!"
+    app.acabarPartida();
+}

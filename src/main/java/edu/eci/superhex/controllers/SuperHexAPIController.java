@@ -24,8 +24,6 @@ public class SuperHexAPIController {
     @Qualifier("SuperHexServices")
     SuperHexServices shs;
 
-    @Autowired
-    SuperHexCache cache;
 
     @RequestMapping(path = "/partidas",method = RequestMethod.GET)
     public ResponseEntity<?> GetAllPartidas() {
@@ -50,17 +48,26 @@ public class SuperHexAPIController {
 
     @RequestMapping(path = "/salas",method = RequestMethod.GET)
     public ResponseEntity<?> GetAllSalas() {
-        return new ResponseEntity<>(cache.getSalas(), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(shs.getSalas(), HttpStatus.ACCEPTED);
     }
 
     @RequestMapping(path = "/salas/{name}",method = RequestMethod.GET)
-    public ResponseEntity<?> GetSala(@PathVariable ("name") String roomName) {
-        return new ResponseEntity<>(cache.getSala(roomName), HttpStatus.ACCEPTED);
+    public ResponseEntity<?> GetSala(@PathVariable ("name") String roomName)  {
+        try {
+            return new ResponseEntity<>(shs.getSala(roomName), HttpStatus.ACCEPTED);
+        }catch (SuperHexPersistenceException e){
+            Logger.getLogger(SuperHexAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
-
 
     @RequestMapping(path = "/jugadores/{name}",method = RequestMethod.GET)
     public ResponseEntity<?> GetAllJugadores(@PathVariable ("name") String roomName) {
-        return new ResponseEntity<>(cache.getJugadorBySala(roomName), HttpStatus.ACCEPTED);
+        try {
+            return new ResponseEntity<>(shs.getjugadoresBySala(roomName), HttpStatus.ACCEPTED);
+        }catch (SuperHexPersistenceException e){
+            Logger.getLogger(SuperHexAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 }
