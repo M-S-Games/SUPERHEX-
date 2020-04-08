@@ -1,12 +1,15 @@
 var input = document.getElementById("text");
 var boton1 = document.getElementById("botonArriba");
 var boton2 = document.getElementById("botonAbajo");
+var boton3 = document.getElementById("botonRecords");
 var load = document.getElementById("load-dots");
 var texto = document.getElementById("info");
 var texto2 = document.getElementById("info1");
 var tabla1 = document.getElementById("tablaSalas");
 var tabla2 = document.getElementById("tablaJugadores");
 var clock =  document.getElementById("clock");
+var contenedor =  document.getElementById("container");
+var grafica =  document.getElementById("divGrafica");
 
 function mostrarInicial() {
     load.style.display = "none";
@@ -44,6 +47,20 @@ function mostrarUnido() {
     boton2.style.display = "block";
     boton2.innerText = "exit";
     boton2.setAttribute("onclick","app.salirSala()");
+}
+
+function mostrarGrafica() {
+    contenedor.style.display = "none";
+    grafica.style.display = "block";
+    boton3.innerText = "back";
+    boton3.setAttribute("onclick","mostrarPrincipal()");
+}
+
+function mostrarPrincipal() {
+    contenedor.style.display = "flex";
+    grafica.style.display = "none";
+    boton3.innerText = "Ver estadisticas";
+    boton3.setAttribute("onclick","graph.graficar()");
 }
 
 function _tableJugadores(data){

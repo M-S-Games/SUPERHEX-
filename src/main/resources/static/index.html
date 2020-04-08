@@ -16,7 +16,7 @@
 <body onload="app.connect()">
 
 	<div class="limiter">
-		<div class="container-login100">
+		<div class="container-login100" id="container">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title">
@@ -79,16 +79,23 @@
                 </div>
 			</div>
 		</div>
+		<div id="divGrafica" style="display:none">
+			<canvas id="grafica" width="400" height="400" ></canvas>
+		</div>
+		<div class="bottom">
+			<button type="button" class="bottom-bnt" id="botonRecords" onclick="graph.graficar()">Ver estadisticas</button>
+		</div>
 	</div>
 	<script src="/js/app.js"></script>
 	<script src="/js/cambioVistas.js"></script>
 	<script src="/js/api.js"></script>
 	<script src="/js/clock.js"></script>
+	<script src="/js/graficas.js"></script>
 	<script src="/webjars/jquery/jquery.min.js"></script>
-	<script src="/js/toastr.min.js"></script>
 	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+	<script src="/webjars/toastr/2.1.2/build/toastr.min.js"></script>
 	<script src="/webjars/stomp-websocket/stomp.min.js"></script>
-    <script src="/js/sweetalert.js"></script>
+	<script src="/webjars/chart.js/2.9.3/dist/Chart.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 </body>

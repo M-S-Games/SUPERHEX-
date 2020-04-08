@@ -58,6 +58,7 @@ var app = (function () {
         stompClient.unsubscribe("exit."+joinedRoom);
         stompClient.unsubscribe("started."+joinedRoom);
         stompClient.send("/app/exitroom."+joinedRoom,{},JSON.stringify(user));
+        cancelarClock();
         subCreate();
         mostrarInicial();
         getSala(joinedRoom,validarSola);
