@@ -42,3 +42,18 @@ function getSala(name,callback){
     );
     return getPromise;
 }
+
+function getReporte(callback,name){
+    var url = window.location;
+    var nueva = url.protocol+"//"+url.host + "/superhex/partidas/"+name;
+    var getPromise = $.get(nueva);
+    getPromise.then(
+        function(data){
+            callback(data);
+        },
+        function(){
+            console.log('error')
+        }
+    );
+    return getPromise;
+}

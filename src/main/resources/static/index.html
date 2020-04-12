@@ -10,86 +10,109 @@
 	<link rel="stylesheet" type="text/css" href="/css/util.css">
 	<link rel="stylesheet" href="/css/styles.css"/>
 	<link rel="stylesheet" href="/css/toastr.min.css" />
-    <link rel="stylesheet" href="/css/sweetalert.css">
+	<link rel="stylesheet" href="/css/sweetalert.css">
 	<link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
 </head>
 <body onload="app.connect()">
 
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+<div class="limiter">
+	<div class="container-login100" id="container">
+		<div class="wrap-login100">
+			<form class="login100-form validate-form">
 					<span class="login100-form-title">
 						SuperHex
 					</span>
-					<span class="login100-form-title">
+				<span class="login100-form-title">
 						Plus
 					</span>
 
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" id="text" value="" name="text" placeholder="Username">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
+				<div class="wrap-input100 validate-input" >
+					<input class="input100" type="text" id="text" value="" name="text" placeholder="Username">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
-					</div>
+				</div>
 
-					<div class="container-login100-form-btn">
-						<button type="button" class="login100-form-btn" id="botonArriba"  onclick="app.connectCreate()">Create room</button>
-					</div>
+				<div class="container-login100-form-btn">
+					<button type="button" class="login100-form-btn" id="botonArriba"  onclick="app.connectCreate()">Create room</button>
+				</div>
 
-					<div class="container-login100-form-btn">
-						<button type="button" class="login100-form-btn" id="botonAbajo"  style="display:none">Create room</button>
-					</div>
-				</form>
-                <div class="login100-pic">
+				<div class="container-login100-form-btn">
+					<button type="button" class="login100-form-btn" id="botonAbajo"  style="display:none">Create room</button>
+				</div>
+			</form>
+			<div class="login100-pic">
 					<span class="login100-form-info" id="info">
 						Crea o unete a una sala.
 					</span>
-					<span class="login100-form-info" id="info1">
+				<span class="login100-form-info" id="info1">
 						Pon tu nombre y dale click en una sala para unirte.
 					</span>
-					<div id="clock"></div>
-					<div class="load-dots" id="load-dots" style="display: none">
-						<div class="bounce1"></div>
-						<div class="bounce2"></div>
-						<div class="bounce3"></div>
-					</div>
-                    <div class="table-wrapper-scroll-y my-custom-scrollbar" id="tablaSalas" style="display:block">
-                        <table  class="table table-bordered table-hover mb-0">
-                            <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Nombre Sala</th>
-                                <th scope="col">Cantidad Jugadores</th>
-                            </tr>
-                            </thead>
-                            <tbody id ="salas"></tbody>
-                        </table>
-                    </div>
-                    <div class="table-wrapper-scroll-y my-custom-scrollbar" id="tablaJugadores" style="display:none">
-                        <table class="table table-bordered table-striped mb-0" >
-                            <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Nombre Jugador</th>
-                            </tr>
-                            </thead>
-                            <tbody id ="jugadores"></tbody>
-                        </table>
-                    </div>
-                </div>
+				<div id="clock"></div>
+				<div class="load-dots" id="load-dots" style="display: none">
+					<div class="bounce1"></div>
+					<div class="bounce2"></div>
+					<div class="bounce3"></div>
+				</div>
+				<div class="table-wrapper-scroll-y my-custom-scrollbar" id="tablaSalas" style="display:block">
+					<table  class="table table-bordered table-hover mb-0">
+						<thead class="thead-dark">
+						<tr>
+							<th scope="col">Nombre Sala</th>
+							<th scope="col">Cantidad Jugadores</th>
+						</tr>
+						</thead>
+						<tbody id ="salas"></tbody>
+					</table>
+				</div>
+				<div class="table-wrapper-scroll-y my-custom-scrollbar" id="tablaJugadores" style="display:none">
+					<table class="table table-bordered table-striped mb-0" >
+						<thead class="thead-dark">
+						<tr>
+							<th scope="col">Nombre Jugador</th>
+						</tr>
+						</thead>
+						<tbody id ="jugadores"></tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
-	<script src="/js/app.js"></script>
-	<script src="/js/cambioVistas.js"></script>
-	<script src="/js/api.js"></script>
-	<script src="/js/clock.js"></script>
-	<script src="/webjars/jquery/jquery.min.js"></script>
-	<script src="/js/toastr.min.js"></script>
-	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
-	<script src="/webjars/stomp-websocket/stomp.min.js"></script>
-    <script src="/js/sweetalert.js"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+	<div class="container-login100" id="divGrafica"  style="display:none">
+		<div class="wrap-login100">
+				<span class="login100-form-title">
+					Bienvenido a las estadisticas de SuperHex
+				</span>
+			<span class="login100-form-info" id="statsGeneral">
+				</span>
+			<span class="login100-form-info" id="stats">
+				</span>
+			<span class="login100-form-info">
+					¡Top 5 de los usernames más usados!
+				</span>
+			<canvas id="graficaUsers" ></canvas>
+			<span class="login100-form-info">
+					¡Cantidad de partidas terminadas por etapa!
+				</span>
+			<canvas id="graficaEtapas" ></canvas>
+		</div>
+	</div>
+	<div class="bottom">
+		<button type="button" class="bottom-bnt" id="botonRecords" onclick="graph.graficar()">Ver estadisticas</button>
+	</div>
+</div>
+<script src="/js/app.js"></script>
+<script src="/js/cambioVistas.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/clock.js"></script>
+<script src="/js/graficas.js"></script>
+<script src="/js/sweetalert.js"></script>
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/toastr/2.1.2/build/toastr.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script src="/webjars/chart.js/2.9.3/dist/Chart.js"></script>
+<script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 </body>
 </html>

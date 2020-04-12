@@ -35,6 +35,36 @@ public class SuperHexAPIController {
         }
     }
 
+    @RequestMapping(path = "/partidas/winners",method = RequestMethod.GET)
+    public ResponseEntity<?> GetAllPartidasByWinner() {
+        try {
+            return new ResponseEntity<>(shs.getAllPartidasByWinner(), HttpStatus.ACCEPTED);
+        } catch (SuperHexPersistenceException e) {
+            Logger.getLogger(SuperHexAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(path = "/partidas/etapa",method = RequestMethod.GET)
+    public ResponseEntity<?> GetAllPartidasByEtapa() {
+        try {
+            return new ResponseEntity<>(shs.getAllPartidasByEtapa(), HttpStatus.ACCEPTED);
+        } catch (SuperHexPersistenceException e) {
+            Logger.getLogger(SuperHexAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(path = "/partidas/reciente",method = RequestMethod.GET)
+    public ResponseEntity<?> GetAllRecentPartidas() {
+        try {
+            return new ResponseEntity<>(shs.getLastPartidas(), HttpStatus.ACCEPTED);
+        } catch (SuperHexPersistenceException e) {
+            Logger.getLogger(SuperHexAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
     @RequestMapping(path = "/partidas",method = RequestMethod.POST)
     public ResponseEntity<?> AddNuevaPartida(@RequestBody Partida newPart) throws SuperHexPersistenceException {
         try {
