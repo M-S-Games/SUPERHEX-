@@ -51,7 +51,7 @@ function mostrarUnido() {
 
 function mostrarGrafica() {
     contenedor.style.display = "none";
-    grafica.style.display = "block";
+    grafica.style.display = "flex";
     boton3.innerText = "back";
     boton3.setAttribute("onclick","mostrarPrincipal()");
 }
